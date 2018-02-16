@@ -25,7 +25,15 @@ func GetConnection() *sql.DB {
 		db.SetConnMaxLifetime(time.Second * config.GetDuration("DB.Lifetime"))
 
 		if err != nil {
-			log.Fatal().Err(err)
+			log.Fatal().Err(err).Msg("MySQL connection error")
+		}
+
+		err = db.Ping()
+
+		if err != nil {
+			log.Fatal().Err(err).Msg("MySQL connection error")
+		} else {
+			log.Info().Msg("MySQL connection OK!")
 		}
 	}
 
