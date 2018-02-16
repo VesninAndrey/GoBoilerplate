@@ -1,0 +1,5 @@
+db:
+  connection: root:@tcp(127.0.0.1:3306)/db?charset=utf8mb4
+  lifetime: 30
+  maxidle: 2
+  maxopen: 10
